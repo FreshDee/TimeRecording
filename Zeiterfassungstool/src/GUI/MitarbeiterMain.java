@@ -24,7 +24,7 @@ public class MitarbeiterMain extends JFrame {
 				try {
 
 					frame.setVisible(true);
-					frame.setTitle("Mitarbeiter Übersicht");
+					frame.setTitle("MitarbeiterMain");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

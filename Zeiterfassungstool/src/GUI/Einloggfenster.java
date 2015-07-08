@@ -113,19 +113,22 @@ public class Einloggfenster extends JFrame {
 				}
 				Mitarbeiter tmp = list.login(userID_eingabe.getText(),
 						tmp_password);
+				String art=tmp.getPos().getClass().getName();
+				art= art.substring(art.indexOf(".")+1, art.length());
 				if (tmp != null) {
 					LoginFeedback.setText(tmp.toString());
 					LoginFeedback.setBounds(120, 166, 200, 14);
 					LoginFeedback.setEnabled(true);
-					Random rando = new Random();
-					if (rando.nextInt(2) == 0) {
+					Random rando= new Random();
+					if (rando.nextInt(1) == 0) {
 						frame.dispose();
-						MitarbeiterMain.main(null);
-					}
-				} else {
+						if(art.equals("Projektleiter")){
+							ProjektleiterMain.main(null);
+						}else MitarbeiterMain.main(null);
+					}else {
 					LoginFeedback.setText("");
+					}
 				}
-
 			}
 
 		});

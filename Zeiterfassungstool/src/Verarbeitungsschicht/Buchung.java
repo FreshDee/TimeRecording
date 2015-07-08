@@ -1,6 +1,8 @@
 package Verarbeitungsschicht;
 
-public class Buchung {
+import java.io.Serializable;
+
+public class Buchung implements Serializable {
 	
 	private int BuchungsID;
 	private Datum Buchungsdatum;

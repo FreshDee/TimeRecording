@@ -14,15 +14,15 @@ public class Taetigkeitsverwaltung implements IF_Taetigkeitsverwaltung {
 	
 	private ArrayList<Taetigkeit>ExerciseList= new ArrayList<Taetigkeit>();
 	
-public boolean addMA ( boolean isbillable, Zeit start, Zeit end) throws FileNotFoundException, IOException{
+public boolean addTaetigkeit ( boolean isbillable, Zeit start, Zeit end) throws FileNotFoundException, IOException{
 		
-		//Bei der Neuerstellung eines Mitarbeiters im System wird die ID fortlaufend vergeben und daher automatisch ermittelt.
+		//Bei der Neuerstellung einer Taetigkeit im System wird die ID fortlaufend vergeben und daher automatisch ermittelt.
 		ExerciseList.add(new Taetigkeit(ExerciseList.size()+1, isbillable, start, end));
-		speicher("MAListe1");
+		speicher("ExercisesList");
 		return true;
 	}
 	
-	public boolean deleteMA (String ID){
+	public boolean deleteTaetigkeit (String ID){
 		for(int i=0; i<ExerciseList.size(); i++){
 			if(ExerciseList.get(i).getTatigkeitsID() == Integer.parseInt(ID)){
 				ExerciseList.remove(i);

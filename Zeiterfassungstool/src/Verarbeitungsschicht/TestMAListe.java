@@ -8,7 +8,7 @@ public class TestMAListe {
 	public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
 		Mitarbeiterverwaltung list = new Mitarbeiterverwaltung();
 		list.addMA("MA1", new Projektleiter(), "pp", 40);
-		list.addMA("MA2", new Projektleiter(), "pw", 40);
+		list.addMA("MA2", new Projektmitarbeiter(), "pw", 40);
 		//list.lesen("MAListe1");
 		//list.display();
 //		Mitarbeiter m1 = list.login("MA1", "pp");
