@@ -59,6 +59,17 @@ public class ProjektleiterMain extends JFrame {
 
 		JButton btnTimeclaim = new JButton("TimeClaim");
 		btnTimeclaim.setBounds(44, 86, 139, 23);
+		btnTimeclaim.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				TimeClaim.main(null);
+				frame.dispose();
+				
+			}
+			
+		});
 		panel.add(btnTimeclaim);
 
 		JButton btnMitarbeiterverwaltung = new JButton("Mitarbeiterverwaltung");

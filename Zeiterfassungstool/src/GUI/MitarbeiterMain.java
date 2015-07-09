@@ -52,6 +52,8 @@ public class MitarbeiterMain extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				JOptionPane.showMessageDialog(null, "Hier kommt das Claim Time Fenster");
+				TimeClaim.main(null);
+				frame.dispose();
 			}
 		});
 		
@@ -64,6 +66,7 @@ public class MitarbeiterMain extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				JOptionPane.showMessageDialog(null, "Hier kommt das Buchungsfenster");
+				
 			}
 		});
 		

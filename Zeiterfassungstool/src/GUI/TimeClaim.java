@@ -7,14 +7,22 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+import Verarbeitungsschicht.Taetigkeit;
+
 public class TimeClaim extends JFrame {
 
 	private JPanel contentPane;
+	private Taetigkeit tmp;
+	private static TimeClaim frame = new TimeClaim();
 
 	/**
 	 * Launch the application.
@@ -23,7 +31,6 @@ public class TimeClaim extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TimeClaim frame = new TimeClaim();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,6 +43,7 @@ public class TimeClaim extends JFrame {
 	 * Create the frame.
 	 */
 	public TimeClaim() {
+		setTitle("Time Claim");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -85,7 +93,21 @@ public class TimeClaim extends JFrame {
 		panel.add(lblZugehrigesProjekt);
 		
 		JButton btnTtigkeitsauswahl = new JButton("T\u00E4tigkeitsauswahl");
+		btnTtigkeitsauswahl.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				Taetigkeitsauswahl.main(null);
+				frame.dispose();
+			}
+			
+		});
 		btnTtigkeitsauswahl.setBounds(286, 187, 128, 23);
 		panel.add(btnTtigkeitsauswahl);
+		
+		JButton btnHi = new JButton("hi");
+		btnHi.setBounds(20, 187, 89, 23);
+		panel.add(btnHi);
 	}
 }

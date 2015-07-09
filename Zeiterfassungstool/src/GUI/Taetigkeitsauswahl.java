@@ -53,7 +53,7 @@ public class Taetigkeitsauswahl extends JDialog {
 		{
 			JLabel lblTtigkeitsauswahl = new JLabel("T\u00E4tigkeitsauswahl");
 			lblTtigkeitsauswahl.setFont(new Font("Tahoma", Font.BOLD, 15));
-			lblTtigkeitsauswahl.setBounds(143, 10, 149, 14);
+			lblTtigkeitsauswahl.setBounds(143, 10, 149, 20);
 			contentPanel.add(lblTtigkeitsauswahl);
 		}
 		
