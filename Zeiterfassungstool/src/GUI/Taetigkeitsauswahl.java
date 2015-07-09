@@ -14,14 +14,18 @@ import javax.swing.JComboBox;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JTextField;
 
 import Verarbeitungsschicht.Taetigkeitsverwaltung;
+import Verarbeitungsschicht.Zeit;
 
 public class Taetigkeitsauswahl extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
+	private String exercise_auswahl;
+	static JComboBox comboBox = new JComboBox(getpossible());
 	private JTextField txtVonh;
 	private JTextField txtBish;
 	private JTextField txtVonm;
@@ -56,17 +60,19 @@ public class Taetigkeitsauswahl extends JDialog {
 			lblTtigkeitsauswahl.setBounds(143, 10, 149, 20);
 			contentPanel.add(lblTtigkeitsauswahl);
 		}
+
 		
-		JComboBox comboBox = new JComboBox(getpossible());
 		comboBox.setBounds(181, 90, 163, 20);
 		contentPanel.add(comboBox);
 		{
-			JLabel lblBitteTtigkeitAuswhlen = new JLabel("Bitte T\u00E4tigkeit ausw\u00E4hlen:");
+			JLabel lblBitteTtigkeitAuswhlen = new JLabel(
+					"Bitte T\u00E4tigkeit ausw\u00E4hlen:");
 			lblBitteTtigkeitAuswhlen.setBounds(10, 93, 132, 14);
 			contentPanel.add(lblBitteTtigkeitAuswhlen);
 		}
 		{
-			JLabel lblBitteArbeitzeitraumAngeben = new JLabel("Bitte Arbeitzeitraum angeben:");
+			JLabel lblBitteArbeitzeitraumAngeben = new JLabel(
+					"Bitte Arbeitzeitraum angeben:");
 			lblBitteArbeitzeitraumAngeben.setBounds(10, 144, 163, 14);
 			contentPanel.add(lblBitteArbeitzeitraumAngeben);
 		}
@@ -125,16 +131,47 @@ public class Taetigkeitsauswahl extends JDialog {
 			{
 				JButton okButton = new JButton("OK");
 				okButton.setActionCommand("OK");
-				okButton.addActionListener(new ActionListener(){
+				okButton.addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						// TODO Auto-generated method stub
-						Taetigkeitsverwaltung tmp=new Taetigkeitsverwaltung();
-//						if(combobox.)
-//						tmp.addTaetigkeit(combobox., start, end)
+						Taetigkeitsverwaltung tmp = new Taetigkeitsverwaltung();
+						int auswahl = comboBox.getSelectedIndex();
+						if (auswahl < 2) {
+							try {
+								tmp.addTaetigkeit(
+										getpossible()[auswahl],
+										true,
+										new Zeit(
+												Integer.parseInt(txtVonh.getText()),
+												Integer.parseInt(txtVonm.getText())),
+										new Zeit(
+												Integer.parseInt(txtBish.getText()),
+												Integer.parseInt(txtBism.getText())));
+							} catch (NumberFormatException | IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}else{
+							try {
+								tmp.addTaetigkeit(
+										getpossible()[auswahl],
+										false,
+										new Zeit(
+												Integer.parseInt(txtVonh.getText()),
+												Integer.parseInt(txtVonm.getText())),
+										new Zeit(
+												Integer.parseInt(txtBish.getText()),
+												Integer.parseInt(txtBism.getText())));
+							} catch (NumberFormatException | IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+
 					}
-					
+
 				});
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
@@ -146,13 +183,13 @@ public class Taetigkeitsauswahl extends JDialog {
 			}
 		}
 	}
-	
-	public String[] getpossible(){
-		String [] tmp=new String[4];
-		tmp[0]="Projektarbeiten";
-		tmp[1]="Attending Meetings";
-		tmp[2]="Organisatorische Arbeiten";
-		tmp[3]="Business Travel (Projektbezogen)";
+
+	public static String[] getpossible() {
+		String[] tmp = new String[4];
+		tmp[0] = "Projektarbeiten";
+		tmp[1] = "Business Travel (Projektbezogen)";
+		tmp[2] = "Organisatorische Arbeiten";
+		tmp[3] = "Attending Meetings";
 		return tmp;
 	}
 }

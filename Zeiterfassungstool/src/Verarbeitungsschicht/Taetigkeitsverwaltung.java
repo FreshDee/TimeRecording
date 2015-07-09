@@ -14,10 +14,10 @@ public class Taetigkeitsverwaltung implements IF_Taetigkeitsverwaltung {
 	
 	private ArrayList<Taetigkeit>ExerciseList= new ArrayList<Taetigkeit>();
 	
-public boolean addTaetigkeit ( boolean isbillable, Zeit start, Zeit end) throws FileNotFoundException, IOException{
+public boolean addTaetigkeit (  String bez, boolean isbillable, Zeit start, Zeit end) throws FileNotFoundException, IOException{
 		
 		//Bei der Neuerstellung einer Taetigkeit im System wird die ID fortlaufend vergeben und daher automatisch ermittelt.
-		ExerciseList.add(new Taetigkeit(ExerciseList.size()+1, isbillable, start, end));
+		ExerciseList.add(new Taetigkeit(ExerciseList.size()+1, bez, isbillable, start, end));
 		speicher("ExercisesList");
 		return true;
 	}
